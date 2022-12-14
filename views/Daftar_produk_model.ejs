@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./daftar_produk_model.css" />
+    <title>Daftar Produk | MyShirt</title>
+    <script src="updateDaftarProduk.js" defer></script>
+  </head>
+  <body>
+    <%- include('./layout/headerPem.ejs') %>
+
+    <div class="header-container">
+      <h1>Daftar Produk</h1>
+      <a href="/caricektoko"><button class="header-btn">Back</button></a>
+    </div>
+     
+    <div class="product-list-container">
+      <div class="list-title">
+        <p>Gambar</p>
+        <p>Nama Produk</p>
+        <p>Harga</p>
+        <p>Jumlah Produk</p>
+        <p>Biaya Jahit<p>
+      </div>
+
+      <% for(const produk of semuaproduk) { %>
+      <div class="product-list">
+        <div class="product-item">
+          <img class="product-img item-element" src="/<%= produk.gambarmodel %>" alt="" />
+          <div class="item-element item-title">
+            <p><%= produk.namamodel %> dengan  <%= produk.namabahan %></p>
+          </div>
+          <div class="item-element item-element-short">
+            <p >Rp <%= produk.hargaproduk %></p>
+            <form action="/updateHargaProduk/<%= produk.id_produk %>" method="POST" class="displaynone">
+              <input type="text" name="harga">
+            </form>
+          </div>
+          <div class="item-element item-element-short">
+            <p>~</p>
+          </div>
+          <!-- <div class="item-element item-element-short edit">
+            <button>edit harga produk</button>
+          </div>
+          <div class="item-element item-element-short edit">
+            <button>edit biaya jahit</button>
+          </div> -->
+          <div class="item-element item-element-short">
+            <div>Rp <%= produk.biayajahit %></div>
+            <form action="/updatejahit/<%= produk.id_produk %>" method="POST" class="displaynone">
+              <input type="text" name="updatejahit">
+            </form>
+        </div>
+          <div class="item-element item-element-short editAksesorisHarga edit">
+            <p>edit harga</p>
+          </div>
+          <div class="item-element item-element-short editAksesorisStock editjahit">
+            <p>edit biaya jahit</p>
+          </div>
+        </div>
+      </div>
+      <% } %>
+
+
+      <% for(const aksesoris of semuaaksesoris) { %>
+        <div class="product-list">
+          <div class="product-item">
+            <img class="product-img item-element" src=<%= aksesoris.gambaraksesoris %> alt="" />
+            <div class="item-element item-title">
+              <p><%= aksesoris.namaaksesoris %></p>
+            </div>
+            <div class="item-element item-element-short">
+              <p>Rp <%= aksesoris.hargaaksesoris %></p>
+              <form action="/updateHargaAksesoris/<%= aksesoris.id_aksesoris %>" method="POST" class="displaynone">
+                <input type="text" name="hargaAks">
+              </form>
+            </div>
+            <div class="item-element item-element-short">
+              <p><%= aksesoris.jumlahaksesoris %></p>
+              <form action="/updateJumlahAksesoris/<%= aksesoris.id_aksesoris %>" method="POST" class="displaynone">
+                <input type="text" name="jumlahAks">
+              </form>
+            </div>
+            <div class="item-element item-element-short editAksesorisHarga editaksharga">
+              <p>edit harga</p>
+            </div>
+            <div class="item-element item-element-short editAksesorisStock editstock">
+              <p>edit stock</p>
+            </div>
+          </div>
+        </div>
+        <% } %>
+
+        <% for(const i of semuabahan) { %>
+          <div class="product-list">
+            <div class="product-item">
+              <img class="product-img item-element" src=<%= i.gambarbahan %> alt="" />
+              <div class="item-element item-title">
+                <p><%= i.namabahan %></p>
+              </div>
+              <!-- <div class="item-element item-element-short"> -->
+                <div class="item-element deskripsi">
+                <p><%= i.deskripsibahan %></p>
+                <form action="/updatedeskripsibahan/<%= i.id_bahan %>" method="POST" class="displaynone">
+                  <input type="text" name="updatedeskripsibahan" maxlength="100">
+                </form>
+              </div>
+              <div class="item-element item-element-short editAksesorisHarga editdeskripsibahan">
+                <p>edit deskripsi</p>
+              </div>
+              </div>
+        <%}%>
+
+      <!-- <div class="product-list">
+        <div class="product-item">
+          <img class="product-img item-element" src="img_kemeja.png" alt="img_kemeja" />
+          <div class="item-element item-title">
+            <p>Kemeja Formal</p>
+          </div>
+          <div class="item-element item-element-short">
+            <p>Rp.150.000</p>
+          </div>
+          <div class="item-element item-element-short">
+            <p>~</p>
+          </div>
+          <div class="item-element item-element-short">
+            <p>edit</p>
+          </div>
+          <div class="item-element item-element-short"></div>
+          <div class="item-element item-element-short"></div>
+        </div>
+      </div>
+      <div class="product-list">
+        <div class="product-item">
+          <img class="product-img item-element" src="img_kaos_panjang.png" alt="img_kaos_lengan_panjang" />
+          <div class="item-element item-title">
+            <p>Kaos Lengan Panjang</p>
+          </div>
+          <div class="item-element item-element-short">
+            <p>Rp.250.000</p>
+          </div>
+          <div class="item-element item-element-short">
+            <p>~</p>
+          </div>
+          <div class="item-element item-element-short">
+            <p>edit</p>
+          </div>
+          <div class="item-element item-element-short"></div>
+          <div class="item-element item-element-short"></div>
+        </div>
+      </div>
+      <div class="product-list">
+        <div class="product-item">
+          <img class="product-img item-element" src="img_fakboi.png" alt="img_baju_fakboi" />
+          <div class="item-element item-title">
+            <p>Baju Fakboi</p>
+          </div>
+          <div class="item-element item-element-short">
+            <p>Rp.150.000</p>
+          </div>
+          <div class="item-element item-element-short">
+            <p>~</p>
+          </div>
+          <div class="item-element item-element-short">
+            <p>edit</p>
+          </div>
+          <div class="item-element item-element-short"></div>
+          <div class="item-element item-element-short"></div>
+        </div>
+      </div>
+      <div class="product-list">
+        <div class="product-item">
+          <img class="product-img item-element" src="img_kancing.jpeg" alt="img_kancing" />
+          <div class="item-element item-title">
+            <p>Kancing</p>
+          </div>
+          <div class="item-element item-element-short">
+            <p>Rp.10.000</p>
+          </div>
+          <div class="item-element item-element-short">
+            <p>5</p>
+          </div>
+          <div class="item-element item-element-short">
+            <p>edit</p>
+          </div>
+          <div class="item-element item-element-short"></div>
+          <div class="item-element item-element-short"></div>
+        </div>
+      </div>
+    </div> -->
+  </body>
+</html>

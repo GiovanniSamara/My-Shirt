@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- <meta charset="UTF-8"> -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=	, initial-scale=1.0">
+    <link rel="stylesheet" href="/pilih_detail_page.css"  />
+    <title>Document</title>
+</head>
+
+<body>
+    <%- include('./layout/headerPem.ejs') %>
+    <div class="container">
+        <button class="back">
+            <a href="/balikmodel">Back</a>
+        </button>
+
+        <div class="flex">
+            <! <table class="ukuran_tabel">
+            <tr>
+                <td class="ukuran_tabel1">
+            <div class="konten1">
+                <div class="baju">
+                    <img src="/<%= hasil[0].gambarmodel %>" alt="" />
+                </div>
+                <div class="text"><b>
+                        <p>Deskripsi</p>
+                        <!-- <p>kaos polo modern yang <br>
+                            terinspirasi dari kemea ruger <br>
+                            tradisional. Nyaman dikenaan <br>
+                            dan mudah di rawat.</p>
+                         -->
+                         <p><%= hasil[0].deskripsimodel %></p>
+                    </b>
+                </div>
+            </div>
+
+            <!-- </td>
+                <td class="ukuran_tabel2"> -->
+            <div class="wadah_ukuran">
+                <div class="judul">
+                    <p><b><%= namamodel %></b></p>
+                </div>
+                <div>
+                    <button class="opsiwarna">
+                        <p><b>Pilih Warna</b></p>
+                    </button>
+                </div>
+
+                <form action="/bahan?bahan=Katun" method="POST">
+                <div class="warna">
+                    <input type="radio" name="warna" value="ungu">
+                    <button class="ungu"></button>
+                    <input type="radio" name="warna" value="coklat">
+                    <button class="coklat"></button>
+                    <input type="radio" name="warna" value="merah">
+                    <button class="merah"></button>
+                    <input type="radio" name="warna" value="hijau">
+                    <button class="hijau"></button>
+                </div>
+                <div class="ukuran">
+                    <button class="opsi-ukuran">
+                        <p><b>Ukuran</b></p>
+                    </button>
+                </div>
+                <div class="ukuran">
+                    <input type="radio" name="ukuran" value="XXS">
+                    <button class="x">
+                        <p><b>XXS</b></p>
+                    </button>
+                    <input type="radio" name="ukuran" value="XS">
+                    <button class="x">
+                        <p><b>XS</b></p>
+                    </button>
+                    <input type="radio" name="ukuran" value="M">
+                    <button class="x">
+                        <p><b>M</b></p>
+                    </button>
+                    <input type="radio" name="ukuran" value="L">
+                    <button class="l">
+                        <p><b>L</b></p>
+                    </button>
+                    <input type="radio" name="ukuran" value="XL">
+                    <button class="x">
+                        <p><b>XL</b></p>
+                    </button>
+                    <input type="radio" name="ukuran" value="XXL">
+                    <button class="x">
+                        <p><b>XXL</b></p>
+                    </button>
+                </div>
+                <div class="next">
+                    <button class="selanjutnya">Selanjutnya</button>
+                </div>
+            </form>
+            </div>
+            <!-- </td>
+            </tr>
+        </table> -->
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

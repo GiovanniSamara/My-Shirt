@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="/sign_up.css" />
+  </head>
+  <body>
+    <form method="POST" action="/signup">
+    <div class="login-items">
+      <img src="img_logo.png" alt="" />
+      <div class="login-form">
+        <p class="singup-text" for="name">Sign Up</p>
+        <div class="login-input">
+          <label for="username">Username</label>
+          <input type="text" name="username" maxlength="50" />
+        </div>
+        <div class="login-input">
+          <label for="password">Password</label>
+          <input type="password" name="password" minlength="5" maxlength="50"/>
+        </div>
+        <div class="login-input">
+          <label for="email">Email</label>
+          <input type="email" name="email" maxlength="50"/>
+        </div>
+        <div class="login-input">
+          <label for="no_telp">No Telepon</label>
+          <input type="text" name="telepon" minlength="12" maxlength="12"/>
+        </div>
+        <div class="login-input">
+          <label for="input">Alamat</label>
+          <input style="width: 20rem" type="text" name="alamat" maxlength="50" />
+        </div>
+        <div class="login-btn">
+          <!-- <a href="#"> -->
+            <button>Sign Up</button>
+          <!-- </a> -->
+        </div>
+      </form>
+        <div class="term-checkbox">
+          <input type="checkbox" />
+          <p>I've read and agree with Terms of Service and our Privacy Policy</p>
+        </div>
+      </div>
+      <%if(pesan!==undefined){%>
+        <%=pesan%>
+      <%}%>
+    </div>
+  </body>
+</html>

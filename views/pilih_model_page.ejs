@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=	, initial-scale=1.0">
+    <link rel="stylesheet" href="./pilih_model_page.css" />
+    <title>Document</title>
+</head>
+
+<body>
+  <%- include('./layout/headerPem.ejs') %>
+
+    <div class="search">
+        <form method="GET" action="/model?">
+        <input type="text" placeholder="Search model..." name="filter" maxlength="50">
+        </form>
+    </div>
+    <div class="container">
+        <table class="tab-container">
+            
+            <tr>
+                <% for(let i=0;i<produk.length;i++){%>
+                    <% if(i<=2) {%>
+                        <td class="col-btn">
+                            <div class="btn">
+                                <span>
+                                    <img src="/<%= produk[i].gambarmodel %>"" alt="" />
+                                </span>
+                                <p><a href="/detailpage/<%= produk[i].namamodel %>/<%= produk[i].hargaproduk %>" style="color:black"><b><%= produk[i].namamodel %> <br>Rp <%= produk[i].hargaproduk %></b></a></p>
+                            </div>
+                        </td>
+                    <%}else if(i===3){%>
+                    </tr>
+                    <tr>
+                        <td class="col-btn">
+                            <div class="btn">
+                                <span>
+                                    <img src="/<%= produk[i].gambarmodel %>" alt="" />
+                                </span>
+                                <p><a href="/detailpage/<%= produk[i].namamodel %>/<%= produk[i].hargaproduk %>" style="color:black"><b><%= produk[i].namamodel %> <br>Rp <%= produk[i].hargaproduk %></b></a></p>
+                            </div>
+                        </td>
+                    <%}else{%>
+                        <td class="col-btn">
+                            <div class="btn">
+                                <span>
+                                    <img src="/<%= produk[i].gambarmodel %>" alt="" />
+                                </span>
+                                <p><a href="/detailpage/<%= produk[i].namamodel %>/<%= produk[i].hargaproduk %>" style="color:black"><b><%= produk[i].namamodel %> <br>Rp <%= produk[i].hargaproduk %></b></a></p>
+                            </div>
+                        </td>
+                        <% } %>
+                        <% } %>
+                    </tr>
+                
+        </table>
+        <div class="pagination">
+            <% for(let i=0,j=0;i<jmlhPage;i++,j=j+3){%>
+                <%if(i===start/3){%>
+                <button class="aktiv"><a href="/model?start=<%= j%>" class="aktiv"><%= i+1 %></a></button>
+                <%}else{%>
+                    <button><a href="/model?start=<%= j%>"><%= i+1 %></a></button>
+                <%}%>
+            <% } %>
+            
+        </div>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transaksi Pengiriman | MyShirt</title>
+    <link rel="stylesheet" href="./transaksi_pengiriman.css" />
+    <script src="ubahTransaksi.js" defer></script>
+  </head>
+  <body>
+    <%- include('./layout/headerPem.ejs') %>
+    <div class="header-container">
+      <h1>Transaksi Pengiriman</h1>
+      <a href="/caricektoko"><button class="header-btn">Back</button></a>
+    </div>
+    <div class="product-list-container">
+      <table class="item-list-table" cellpadding="0" cellspacing="0">
+        <tr class="item-name">
+          <td>Id Pesanan</td>
+          <td>Pesanan</td>
+          <td>Total</td>
+          <td>Alamat</td>
+          <td>Kurir Pengirim</td>
+          <td>Nomor Resi</td>
+          <td>Status Pesanan</td>
+        </tr>
+        <% for(const pesanan of pesanans){ %>
+        <tr class="item-list">
+          <td style="border-radius: 10px 0px 0px 10px"><%= pesanan.id_pesanan%></td>
+          <td><div style="font-weight: bold"><%= pesanan.detailpesanan%></div></td>
+          <td>
+            <div style="font-weight: bold"><%= pesanan.total_biaya%></div>
+          </td>
+          <td>
+            <div><%=pesanan.alamat%></div>
+          </td>
+          <td>
+            <div><%=pesanan.kurir%> </div>
+            <form action="/ubahtransaksi/kurir/<%= pesanan.id_pesanan%>" method="POST" class="displaynone">
+              <input type="text" name="update" maxlength="50">
+            </form>
+            <div style="margin-top:2px;width: 50px;height:24px;" class="ubah"""><img class="edit-img" src="pensil.png" alt="" /></div>
+          </td>
+          <td>
+            <div><%=pesanan.noresi%></div>
+            <form action="/ubahtransaksi/noresi/<%= pesanan.id_pesanan%>" method="POST" class="displaynone">
+              <input type="text" name="update" maxlength="50"> 
+            </form>
+            <div style="margin-top:2px;width: 50px;height:24px;" class="ubah"""><img class="edit-img" src="pensil.png" alt="" /></div>
+          </td>
+          <td>
+            <div><%=pesanan.status_pesanan%></div>
+            <form action="/ubahtransaksi/status_pesanan/<%= pesanan.id_pesanan%>" method="POST" class="displaynone">
+              <input type="text" name="update" maxlength="50">
+            </form>
+            <div style="margin-top:2px;width: 50px;height:24px;" class="ubah"><img class="edit-img" src="pensil.png" alt="" /></div>
+          </td>
+          <td style="padding: 2rem; border-radius: 0px 10px 10px 0px">
+            <a href="">
+              <!-- <img class="edit-img" src="pensil.png" alt="" /> -->
+            </a>
+          </td>
+        </tr>
+        <% } %>
+      </table>
+    </div>
+  </body>
+</html>

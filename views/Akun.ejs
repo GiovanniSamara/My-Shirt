@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Styles.css">
+    <script src="tampilkanForm.js" defer></script>
+    <title>Home</title>
+</head>
+<body>
+    <%- include('./layout/headerAdmin.ejs') %>
+    <div class="mid">
+        <h2>Akun</h2>
+        <a href="/Home" class="back"><p>Back</p></a>
+    </div>
+    <div class="isi">
+        <table>
+            <tr>
+              <th>Username</th>
+              <th>Role</th>
+              <th>Email</th>
+              <th>Alamat</th>
+              <th>Nomor Telepon</th>
+            </tr>
+            <% for(const akun of akuns) { %>
+                <tr>
+                    <td><%= akun.username %></td>
+                    <td><%= akun.role %></td>
+                    <td><%= akun.email %></td>
+                    <td><%= akun.alamat %></td>
+                    <td><%= akun.no_telp %></td>
+                </tr>
+            <% } %>
+            
+          </table>
+            <div class="bottomleft">
+                <a class="tampilkan">Add</a>
+            </div>
+            <div class="bottomright">
+                <a class="hapuskan">Remove</a>
+            </div>
+            <div class="input displaynone">
+                <div class="box">
+                    <form action="/tambahakun" method="POST">
+                        <label>Username</label>
+                        </br>
+                        <input type="text" placeholder="" name="username" maxlength="50" required>
+                        </br>
+                        <label>Password</label>
+                        </br>
+                        <input type="password" placeholder="" name="password" minlength="5" maxlength="50" required>
+                        </br>
+                        <label>E-Mail </label>
+                        </br>
+                        <input type="email" placeholder="" name="email" maxlength="50" required>
+                        </br>
+                        <label>No. Telepon</label>
+                        </br>
+                        <input type="text" placeholder="" name="telepon" maxlength="12" minlength="12" required>
+                        </br>
+                        <label>Alamat</label>
+                        </br>
+                        <input type="text" placeholder="" name="alamat" maxlength="50" required>
+                        <br>
+                        <button type="submit">Submit</button>
+                        <button class="hilangkan">Cancel</button>
+                    </form>
+                </div>
+            </div>
+            <div class="hapus displaynone">
+                <div class="box">
+                    <form action="/hapusakun" method="POST">
+                        <label>Username</label>
+                        </br>
+                        <input type="text" placeholder="" name="filterHapus" maxlength="50" required>
+                        <button type="submit">Submit</button>
+                        <button class="hilangkan">Cancel</button>
+                    </form>
+                </div>
+            </div>
+    </div>
+</body>
+</html>
+

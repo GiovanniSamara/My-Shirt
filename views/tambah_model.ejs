@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tambah Model | MyShirt</title>
+    <link rel="stylesheet" href="./tambah_model.css" />
+    <script src="uploadGambar.js" defer></script>
+  </head>
+  <body>
+    <%- include('./layout/headerPem.ejs') %>
+      <div class="back-section">
+        <div></div>
+        <a href="/caricektoko"><button class="header-btn">Back</button></a>
+      </div>
+      <div class="content-container">
+        <!-- <div>
+          <h1 class="header-name">Tambah Model</h1>
+          <div>
+            <form class="form-section" action="">
+              <div class="nama-model-input input">
+                <div class="label">
+                  <label for="">Nama Model</label>
+                </div>
+                <input type="text" id="nama" />
+              </div>
+              <div class="harga-input input">
+                <div class="label">
+                  <label for="">Harga</label>
+                </div>
+                <input type="text" id="harga" />
+              </div>
+              <div class="gambar-input input">
+                <div class="label">
+                  <label for="">Gambar</label>
+                </div>
+                <a href=""><img src="img_upload.png" alt="" /></a>
+              </div>
+              <div class="deskripsi-input input">
+                <div class="label">
+                  <label for="">Deskripsi</label>
+                </div>
+                <input type="text" id="deskripsi" />
+              </div>
+              <div class="btn">
+                <button class="submit-btn">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div> -->
+        <div> 
+          <h1 class="header-name">Tambah Produk</h1>
+          <div>
+            <form class="form-section" action="/tambahProduk" method="POST">
+              <div class="nama-model-input input">
+                <div class="label">
+                  <label for="">Nama Produk</label>
+                </div>
+                <input type="text" id="nama" />
+              </div>
+              <div class="harga-input input">
+                <div class="label">
+                  <label for="">Harga</label>
+                </div>
+                <input type="text" id="harga" />
+              </div>
+              <div class="gambar-input input">
+                <div class="label">
+                  <label for="">Gambar</label>
+                </div>
+                <!-- <a href=""><img src="img_upload.png" alt="" /></a> -->
+                <input type="file" name="GambarProduk">
+              </div>
+              <div class="deskripsi-input input">
+                <div class="label">
+                  <label for="">Deskripsi</label>
+                </div>
+                <input type="text" id="deskripsi" />
+              </div>
+              <div class="btn">
+                <button class="submit-btn">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div>
+          <h1 class="header-name">Tambah Aksesoris</h1>
+          <div>
+            <form class="form-section" action="/tambahAksesoris" method="POST">
+              <div class="nama-model-input input">
+                <div class="label">
+                  <label for="">Nama Aksesoris</label>
+                </div>
+                <input type="text" id="nama" />
+              </div>
+              <div class="harga-input input">
+                <div class="label">
+                  <label for="">Harga</label>
+                </div>
+                <input type="text" id="harga" />
+              </div>
+              <div class="harga-input input">
+                <div class="label">
+                  <label for="">Jumlah Aksesoris</label>
+                </div>
+                <input type="text" id="harga" />
+              </div>
+              <div class="gambar-input input">
+                <div class="label">
+                  <label for="">Gambar</label>
+                </div>
+                <!-- <a href=""><img src="img_upload.png" alt="" /></a> -->
+                <input type="file">
+              </div>
+              <div class="deskripsi-input input">
+                <div class="label">
+                  <label for="">Deskripsi</label>
+                </div>
+                <input type="text" id="deskripsi" />
+              </div>
+              <div class="btn">
+                <button class="submit-btn">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

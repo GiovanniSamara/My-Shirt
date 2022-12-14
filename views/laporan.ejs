@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laporan | MyShirt</title>
+    <link rel="stylesheet" href="./laporan.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  </head>
+  <body>
+    <%- include('./layout/headerPem.ejs') %>
+    <div class="header-container">
+      <h1>Laporan</h1>
+      <a href="/caricektoko"><button class="header-btn">Back</button></a>
+    </div>
+    <div class="product-list-container">
+      <table class="item-list-table" cellpadding="0" cellspacing="0">
+        <tr class="item-name">
+          <td>Id Pesanan</td>
+          <td>Waktu</td>
+          <td>Username</td>
+          <td>Pesanan</td>
+          <td>Total Biaya</td>
+          <td>Status</td>
+          <td>Validasi</td>
+        </tr>
+        <% for(const pesanan of pesanans) { %>
+        <tr class="item-list">
+          <td style="border-radius: 0px 0px 0px 0px"><div style="font-weight: bold"><%= pesanan.id_pesanan %></div></td>
+          <td>
+            <div style="font-weight: bold"><%= pesanan.waktu %></div>
+          </td>
+          <td>
+            <div><%= pesanan.username %></div>
+          </td>
+          <td>
+            <div><%= pesanan.detailpesanan %></div>
+          </td>
+          <td>
+            <div><%= pesanan.total_biaya %></div>
+          </td>
+          <td style="border-radius: 0px 0px 0px 0px" class="status">
+            <div>
+              <!-- <ul>
+                <li>(20:00 PM) Menunggu pembayaran dari Pemesan</li>
+                <li>(20:05 PM) Pembayaran telah diterima Pemilik</li>
+                <li>(20:10 PM) Pembayaran sudah Diverifikasi oleh admin</li>
+                <li>(20:15 PM) Pemesanan sedang diproses oleh Pemilik</li>
+              </ul> -->
+              <%= pesanan.status %>
+            </div>
+          </td>
+          <td>
+            <% if(pesanan.validasi==='y') { %>
+            <div>Sudah</div>
+            <% }else{ %>
+              <div>Belum</div>
+              <%}%>
+          </td>
+        </tr>
+        <% } %>
+      </table>
+    </div>
+  <!-- buat aksesoris -->
+<%let xValuesAksesoris =[]%>
+<%for(const i of aks){%>
+    <%xValuesAksesoris.push(i.namaaksesoris)%>
+<%}%>
+<%let jumlahAksesoris=[]%>
+<%let hitung=0%>
+<%for(const i of xValuesAksesoris){%>
+  <%for(const k of pesanans){%>
+    <%if(k.detailpesanan.split('+')[4].split(':')[1]===i){%>
+        <%hitung++%>
+    <%}%>
+  <%}%>
+      <%jumlahAksesoris.push(hitung)%>
+      <%hitung=0%>
+<%}%>
+<!-- buat bahan -->
+<%let xValuesBahan =[]%>
+<%for(const i of bahan){%>
+    <%xValuesBahan.push(i.namabahan)%>
+<%}%>
+<%let jumlahBahan=[]%>
+<%let hitungBahan=0%>
+<%for(const i of xValuesBahan){%>
+  <%for(const k of pesanans){%>
+    <%if(k.detailpesanan.split('+')[3].split(':')[1]===i){%>
+        <%hitungBahan++%>
+    <%}%>
+  <%}%>
+      <%jumlahBahan.push(hitungBahan)%>
+      <%hitungBahan=0%>
+<%}%>
+
+<!-- buat model -->
+<%let xValuesModel =[]%>
+<%for(const i of model){%>
+    <%xValuesModel.push(i.namamodel)%>
+<%}%>
+<%let jumlahModel=[]%>
+<%let hitungModel=0%>
+<%for(const i of xValuesModel){%>
+  <%for(const k of pesanans){%>
+    <%if(k.detailpesanan.split('+')[0].split(':')[1]===i){%>
+        <%hitungModel++%>
+    <%}%>
+  <%}%>
+      <%jumlahModel.push(hitungModel)%>
+      <%hitungModel=0%>
+<%}%>
+
+    <canvas id="aksesoris" width="5" height="1"></canvas>
+    <canvas id="bahan" width="5" height="1"></canvas>
+    <canvas id="model" width="5" height="1"></canvas>
+    <script>
+      //hitung buat chart aksesoris
+    const ctx = document.getElementById('aksesoris').getContext('2d');
+    const xValues = <%- JSON.stringify(xValuesAksesoris) %>;
+    const yValues = <%- JSON.stringify(jumlahAksesoris)%>;
+    const barColors = ["red","yellow","blue","orange","white","black"];
+    const chart = new Chart(ctx,{
+      type : "bar",
+      data :{
+        labels : xValues,
+        datasets :[{
+          backgroundColor : barColors,
+          data : yValues
+        }]
+      },
+      options:{
+        scales:{
+          yAxes:[{
+            ticks :{
+              beginAtZero : true
+            }
+          }]
+        },
+        legend : {display : false},
+        title :{
+          display : true,
+          text : "Jumlah Pembelian Aksesoris"
+        }
+      }
+    })
+      //hitung buat bahan
+    const ctxBahan = document.getElementById('bahan').getContext('2d');
+    const xValuesBahan = <%- JSON.stringify(xValuesBahan) %>;
+    const yValuesBahan = <%- JSON.stringify(jumlahBahan)%>;
+    const barColorsBahan = ["red","yellow","blue"];
+    const chartBahan = new Chart(ctxBahan,{
+      type : "bar",
+      data :{
+        labels : xValuesBahan,
+        datasets :[{
+          backgroundColor : barColorsBahan,
+          data : yValuesBahan
+        }]
+      },
+      options:{
+        scales:{
+          yAxes:[{
+            ticks :{
+              beginAtZero : true
+            }
+          }]
+        },
+        legend : {display : false},
+        title :{
+          display : true,
+          text : "Jumlah Pembelian Bahan"
+        }
+      }
+    })
+    //hitung buat model
+    const ctxModel = document.getElementById('model').getContext('2d');
+    const xValuesModel = <%- JSON.stringify(xValuesModel) %>;
+    const yValuesModel = <%- JSON.stringify(jumlahModel)%>;
+    const barColorsModel = ["red","yellow","blue","orange","white","black"];
+    const chartModel = new Chart(ctxModel,{
+      type : "bar",
+      data :{
+        labels : xValuesModel,
+        datasets :[{
+          backgroundColor : barColorsModel,
+          data : yValuesModel
+        }]
+      },
+      options:{
+        scales:{
+          yAxes:[{
+            ticks :{
+              beginAtZero : true
+            }
+          }]
+        },
+        legend : {display : false},
+        title :{
+          display : true,
+          text : "Jumlah Pembelian Model"
+        }
+      }
+    })
+    </script>
+  </body>
+</html>

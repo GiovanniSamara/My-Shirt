@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=	, initial-scale=1.0">
+  <link rel="stylesheet" href="/pilih_aksesoris_page.css" />
+  <script src="catatanaksesoris.js" defer></script>
+  <title>Document</title>
+</head>
+
+<body>
+    <%- include('./layout/headerPem.ejs') %>
+
+  <button class="back">
+    <a href="/balikbahan">Back</a>
+  </button>
+  <div class="wadah">
+    <div class="kiri">
+      <div class="gambar">
+        <img src="/<%=hasil[0].gambaraksesoris%>"" alt="">
+      </div>
+      <div class="deskripsi">
+        <p class="desk">Deskripsi</p>
+        <p><%=hasil[0].deskripsi%></p>
+        <!-- <p>-Renda Cum sociis natoque penatibus et <br>
+          magnis dis parturient montes, nascetur<br>
+          ridiculus mus.</p> -->
+      </div>
+    </div>
+    <div class="kanan">
+      <div class="ket1">
+        <p class="desk2"><%=model%></p>
+        <button>Aksesoris</button>
+        <div class="bahan">
+            <%for(const i of semuaksesoris){%>
+              <%if(i.namaaksesoris===hasil[0].namaaksesoris){%>
+                <button style="border:3px solid red"><a style="color:black" href="/aksesoris?aks=<%=i.namaaksesoris%>"><%=i.namaaksesoris%></a></butaton>
+              <%}else{%>
+                <button><a style="color:black" href="/aksesoris?aks=<%=i.namaaksesoris%>"><%=i.namaaksesoris%></a></butaton>
+              <%}%>
+          
+          <%}%>
+        </div>
+        <div class="catatan">
+          <label for="">
+            <p>CATATAN:</p>
+            <form method="GET" action="/keranjang2/<%=hasil[0].hargaaksesoris%>" class="formctt">
+            <textarea name="catatanaksesoris" id="area" cols="45" rows="6" maxlength="150"></textarea>
+            <!-- <input type="text" width="30px" height="60px" name="catatanaksesoris"> -->
+            
+          </label>
+        </div>
+        <div class="inline">
+          <p class="desk3">Total Biaya Aksesoris</p>
+          <button>Rp <%=hasil[0].hargaaksesoris%></button>
+        </div>
+      </div>
+      
+      <div class="ket2">
+        <div class="lanjut">
+          <!-- <button class="click"><a style="color:black" href="/keranjang2/<%=hasil[0].hargaaksesoris%>">Masukan ke keranjang</button> -->
+            <button class="click">Masukan ke keranjang</button>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

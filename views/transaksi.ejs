@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=	, initial-scale=1.0">
+  <link rel="stylesheet" href="./transaksi.css" />
+  <script src="uploadBukti.js" defer></script>
+  <title>Document</title>
+</head>
+
+<body>
+<%- include('./layout/headerPem.ejs') %>
+  <div class="container">
+    <div class="judul-content">
+      <p class="he"><b> Daftar Transaksi</b></p>
+    </div>
+    <%if(produk!==undefined){%>
+    <div class="waktu">
+      <p><%=waktu%></p>
+    </div>
+    <div class="content-items2">
+      <div class="profile-image">
+        <img class="img-polo" src="<%=gambar%>" />
+      </div>
+      <div class="prodak-detail">
+        <p>Produk : <%=produk%> <br>
+          Warna : <%=warna%> <br>
+          Ukuran : <%=ukuran%> <br>
+          Bahan : <%=bahan%><br>
+          <%if(aksesoris===undefined){%>
+            Aksesoris : -<br>
+          <%}else{%>
+            Aksesoris : <%=aksesoris%><br>
+          <%}%>
+          <%if(catatanaksesoris===undefined){%>
+            Catatan Aksesoris : -<br>
+          <%}else{%>
+            Catatan Aksesoris : <%=catatanaksesoris%><br>
+          <%}%>
+          Biaya Baju + Bahan : Rp <%=hargaproduk%><br>
+          Biaya Jahit : Rp <%=biayajahit%> <br>
+          Biaya Aksesoris : Rp <%=hargaaksesoris%> <br>
+          Biaya Total :  Rp <%=parseInt(hargaaksesoris)+parseInt(biayajahit)+parseInt(hargaproduk)%></p>
+          <br>
+
+          
+          <p>Rekening Pembayaran : <br>
+          Rekening BCA : 06501477 <br>
+          Rekening BNI : 017920129 <br>
+          Gopay : 0812166810</p>
+      </div>
+      <div class="struk">
+        <div class="upload-btn2">
+          <p>Upload Bukti Tranfer</p>
+        </div>
+        <div class="profile-image2" style="color:yellow">
+          <!-- <img class="img-polo2" src="/buktipem2.jpg" /> -->
+          <%if(bukti===undefined){%>
+            <input type="file" name="foto" accept="image/*">
+          <%}else{%>
+            <img width="460px" height="500px"  src="/<%=bukti%>"  />
+          <%}%>
+        </div>
+        <div class="upload-btn">
+          <%if(bukti===undefined){%>
+            <br>
+          <button class="upload"><a href="/transaksi">Upload</a></button>
+          <%}%>
+        </div>
+      </div>
+    </div>
+    <%}%>
+
+    <%if(hasil.length>0){%>
+        <%for(const i of hasil){%>
+          <div class="waktu">
+            <p><%=i.waktu%></p>
+          </div>
+          <div class="content-items2">
+            <div class="profile-image">
+              <% for(const a of semuagambarmodel) { %>
+                <%if(i.detailpesanan.split('+')[0].split(':')[1]===a.namamodel){%>
+                  <img class="img-polo" src="/<%=a.gambarmodel%>"" />
+                <%}%>
+              
+              <%}%>
+            </div>
+            <div class="prodak-detail">
+              <%const hasilsplit= i.detailpesanan.split('+')%>
+              <p><%=hasilsplit[0]%><br><%=hasilsplit[1]%><br><%=hasilsplit[2]%><br><%=hasilsplit[3]%><br><%=hasilsplit[4]%><br>
+                Catatan Aksesoris :<%=i.catatanaksesoris%><br>
+                <%for(const jahitdanhargaproduk of biayajahitdanhargaproduk){%>
+                  <%if(jahitdanhargaproduk.namamodel===hasilsplit[0].split(':')[1] && jahitdanhargaproduk.namabahan===hasilsplit[3].split(':')[1]){%>
+                    Biaya Baju + Bahan: Rp <%=jahitdanhargaproduk.hargaproduk%><br>
+                    Biaya Jahit: Rp <%=jahitdanhargaproduk.biayajahit%><br>
+                  <%}%>
+                <%}%>
+                <%for(const biayaaks of biayaaksesoris){%>
+                  <%if(biayaaks.namaaksesoris===hasilsplit[4].split(':')[1]){%>
+                    Biaya Aksesoris: Rp <%=biayaaks.hargaaksesoris%><br>
+                  <%}%>
+                <%}%>
+                Biaya Total :  <%=i.total_biaya%></p>
+                <br>
+                <p>Status :<%=i.status%> <br>
+                Kurir: <%=i.kurir%><br>
+                No Resi : <%=i.noresi%><br>
+                <%if(i.validasi==='n'){%>
+                  Validasi : Belum
+                <%}else{%>
+                  Validasi : Sudah
+                <%}%>
+              </p>
+            </div>
+            <div class="struk">
+              <div class="upload-btn2">
+                <p>Bukti Tranfer</p>
+              </div>
+              <div class="profile-image2" style="color:yellow">
+                  <img width="460px" height="500px"  src="/<%=i.bukti%>""  />
+              </div>
+            </div>
+          </div>
+        <%}%>  
+    <%}%>
+  </div>
+</body>
+</html>

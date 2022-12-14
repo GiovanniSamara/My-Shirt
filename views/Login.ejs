@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Shirt</title>
+    <link rel="stylesheet" href="Styles.css">
+</head>
+
+<body>
+    <div class="logo">
+        <img src="logomyshirt ver gede.png" alt="">
+    </div>
+    <div class="login">
+        <form method="post" action="/cekakun">
+            <h3>Login</h3>
+            <label>Username</label>
+            </br>
+            <input type="text" placeholder="" name="username" maxlength="50" required>
+            </br>
+            <label>Password </label>
+            </br>
+            <input type="password" placeholder="" name="password" minlength="5" maxlength="50" required>
+            </br>
+            <button>Login</button>
+            <div class="signup-btn">
+                <p>Belum punya akun?</p>
+                <a href="/signup">SIGN UP</a>
+            </div>
+        </form>
+        <p style="color:white;font-size:18px;" ><%= message %></p>
+    </div>
+
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="./login_page.css" />
+  </head>
+  <body>
+    <div class="login-items">
+      <img src="img_logo.png" alt="" />
+        <div class="login-form">
+        <form method="post" action="/cekakun">
+            <p for="name">Login</p>
+            <div class="login-input">
+            <label for="username">Username</label>
+            <input type="text" />
+            </div>
+            <div class="login-input">
+            <label for="password">Password</label>
+            <input type="text" />
+            </div>
+            <div class="login-btn">
+            <a href="#">
+                <button>Login</button>
+            </a>
+            </div>
+            <div class="signup-btn">
+            <p>Belum punya akun?</p>
+            <a href="">SIGN UP</a>
+            </div>
+        </div>
+    </form>
+    <p style="color:white;font-size:18px;" ><%= message %></p>
+    </div>
+  </body>
+</html> -->

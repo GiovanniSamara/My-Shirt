@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Styles.css">
+    <script src="tampilkanFormBuatUpdate.js" defer></script>
+    <title>Home</title>
+</head>
+<body>
+    <%- include('./layout/headerAdmin.ejs') %>
+    <div class="mid">
+        <h2>Status</h2>
+        <a href="/Home" class="back"><p>Back</p></a>
+    </div>
+    <div class="isi">
+        <table>
+            <tr>
+              <th>Id_Pesanan</th>
+              <th>Waktu</th>
+              <th>Username</th>
+              <th>Pesanan</th>
+              <th>Total Biaya</th>
+              <th>Status Pesanan</th>
+              <th>Status</th>
+              <th>Edit</th>
+            </tr>
+            <% for(const pesanan of pesanans) { %>
+              <tr>
+                <td><%= pesanan.id_pesanan %></td>
+                <td><%= pesanan.waktu %></td>
+                <td><%= pesanan.username %></td>
+                <td><%= pesanan.detailpesanan %></td>
+                <td><%= pesanan.total_biaya %></td>
+                <td><%= pesanan.status_pesanan %></td>
+                <td >
+                  <div><%= pesanan.status %></div>
+                  <form method="GET" ACTION="/updateStatus/<%= pesanan.id_pesanan %>" class="displaynone">
+                    <input type="text" name="update" placeholder="Masukan update!" maxlength="100"><br>
+                    <!-- <button type="submit">Submit</button> -->
+                    <br>
+                  </form>
+                  <!-- <button class="cancel displaynone">Cancel</button> -->
+                </td>
+                <td class="ubah"><img src="pensil.png" alt="" ></td>
+              </tr>
+              <% } %>
+          </table> 
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/pilih_bahan_page.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <%- include('./layout/headerPem.ejs') %>
+    <button class="back">
+        <a href="/backtodetail">Back</a>
+    </button>
+    <div class="wadah">
+        <div class="kiri">
+                <div class="gambar">
+                    <img src="/<%=hasil[0].gambarbahan%>" alt="">
+                </div> 
+            <div class="deskripsi">
+                <p class="desk">Deskripsi</p>
+                <% for(const x  of semuabahan) { %>
+                    <%if(x.namabahan===bahan){%>
+                <p><%=x.deskripsibahan%></p>
+                <%break%>
+                    <%}%>
+                    <%}%>
+                <!-- <p>-Kain wool menghangatkan tubuh <br>
+                    pemakaianya, sangat cocok digunakan di <br>
+                    daerah digin</p>
+                <p>-kain linen bahan yang berasal dari serat <br>
+                    tumbuhan 'linen'</p> -->
+            </div>
+        </div>
+        <div class="kanan">
+            <div class="ket1">
+                <p class="desk2"><%= model%></p>
+                <button>Bahan Kain</button>
+                <div class="bahan">
+                    <% for(const x  of semuabahan) { %>
+                        <%if(x.namabahan===bahan){%>
+                            <button class="pilih" style="border:3px solid red"><a style="color:black" href="/bahan?bahan=<%=x.namabahan%>"><%=x.namabahan%><a></button>    
+                        <%}else{%>
+                        <button class="pilih"><a style="color:black" href="/bahan?bahan=<%=x.namabahan%>"><%=x.namabahan%><a></button>
+                        <%}%>
+                    <%}%>
+                    <!-- <button>Wool</button>
+                    <button>Linen</button> -->
+                </div>
+            </div>
+            <div class="ket2">
+                <div class="inline">
+                    <p class="desk3">Total Biaya</p>
+                            <button>Rp <%=hasil[0].hargaproduk%></button>
+                </div>
+
+                <div class="lanjut">
+                    <button><a style="color:black" href="/aksesoris?aks=kancing&jahit=<%=hasil[0].biayajahit%>&produk=<%=hasil[0].hargaproduk%>">Aksesoris</a></button>
+                    <button><a style="color:black" href="/keranjang/<%=hasil[0].hargaproduk%>/<%=hasil[0].biayajahit%>">Masukan ke keranjang</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./cek_toko.css" />
+    <script src="editIdentitasPemilik.js" defer></script>
+    <title>Cek Toko | MyShirt</title>
+  </head>
+  <body>
+    <%- include('./layout/headerPem.ejs') %>
+    <div class="content-container">
+      <div class="profile-section">
+        <div class="profile-items1">
+          <div class="profile-image">
+            <img src="img_user_black.png" alt="img_profile" />
+            <div class="profile-name">
+              <p><%= username %></p>
+            </div>
+          </div>
+          <div class="upload-btn">
+            <img class="upload-img" src="img_upload.png" alt="" />
+            <p>Upload Foto</p>
+          </div>
+        </div>
+        <div class="profile-detail">
+          <div style="margin-bottom:7px">Username : <span><%= username %></span><br>
+            <form method="POST" action="/updateIdentitasPemilik/<%= username %>/username" class="displaynone">
+              <input type="text" name="updateidentitas" maxlength="50">
+            </form>
+            <button class="edit-btn" style="margin-top:8px">Edit</button>
+          </div>
+          <div style="margin-bottom:7px">Alamat : <span><%= identitas[0].alamat %></span><br>
+            <form method="POST" action="/updateIdentitasPemilik/<%= username %>/alamat" class="displaynone">
+              <input type="text" name="updateidentitas" maxlength="50">
+            </form>
+          <button class="edit-btn" style="margin-top:8px">Edit</button>
+          </div>
+          <div style="margin-bottom:7px">Email : <span><%= identitas[0].email %></span><br>
+            <form method="POST" action="/updateIdentitasPemilik/<%= username %>/email" class="displaynone">
+              <input type="email" name="updateidentitas" maxlength="50">
+            </form>
+          <button class="edit-btn" style="margin-top:8px">Edit</button>
+          </div>
+          <div>No Telepon : <span><%= identitas[0].no_telp %></span><br>
+            <form method="POST" action="/updateIdentitasPemilik/<%= username %>/no_telp" class="displaynone">
+              <input type="text" name="updateidentitas" maxlength="12" minlength="12">
+            </form>
+          <button class="edit-btn" style="margin-top:8px">Edit</button>
+          </div>
+        
+          <!-- <button class="edit-btn">Edit</button> -->
+        </div>
+      </div>
+      <%if(role==='Pemilik'){%>
+      <div class="content-items2">
+        <div class="toko-btn">
+          <p>Toko</p>
+          <span>
+            <img class="toko-img" src="img_toko.png" alt="" />
+          </span>
+        </div>
+        <div class="menu-btns">
+          <div class="btn">
+            <span>
+              <a href="caridaftar"><img src="img_daftar.png" alt="" /></a>
+            </span>
+            <p>Daftar Produk</p>
+          </div>
+          <div class="btn">
+            <span>
+              <a href="carilaporan"><img src="img_laporan.png" alt="" /></a>
+            </span>
+            <p>Laporan</p>
+          </div>
+          <div class="btn">
+            <span>
+              <a href="caritransaksi"><img src="img_transaksi.png" alt="" /></a>
+            </span>
+            <p>Transaksi Pengiriman</p>
+          </div>
+          <div class="btn">
+            <span>
+              <a href="caritambah"><img src="img_tambah.png" alt="" /></a>
+            </span>
+            <p>Tambah Produk</p>
+          </div>
+        </div>
+      </div>
+    <%}%>
+    </div>
+  </body>
+</html>
+

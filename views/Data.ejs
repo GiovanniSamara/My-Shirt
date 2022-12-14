@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Styles.css">
+    <title>Home</title>
+</head>
+<body>
+    <%- include('./layout/headerAdmin.ejs') %>
+    <div class="mid">
+        <h2>Data</h2>
+        <a href="/Home" class="back"><p>Back</p></a>
+    </div>
+    <!-- <div class="tanggal"> 
+        <h2>Jumat, 13 Mei 2022 Jam 20.00<h2>
+    </div> -->
+    <div class="isi3">
+        <table>
+            <!-- <tr>
+              <td class="test"><img src="baju.png" alt=""></td>
+            <td class="list-produk">
+                <ul>
+                    <li>Produk : Kaos berkerah (Polo)</li>
+                    <li>Warna : Biru</li>
+                    <li>Ukuran : L</li>
+                    <li>Bahan : Katun</li>
+                    <li>Aksesoris : Kancing</li>
+                    <li>Biaya Baju + Bahan : Rp. 200.000 </li>
+                    <li>Biaya Jahit : Rp. 100.000</li>
+                    <li>Biaya Aksesoris : Rp. 200.000</li>
+                    <li>Biaya Total : Rp. 420.000</li>
+                </ul>
+            </td>
+                <td class="test2"><img src="nota.jpg" alt=""></td>
+            </tr> -->
+            <tr>
+                <th>Waktu</th>
+                <th>Id Pesanan</th>
+                <th>Detail Pesanan</th>
+                <th>Bukti Pembayaran</th>
+              </tr>
+            <% for(const hasil of hasils) { %>
+            <tr>
+                <td class="list-produk">
+                    <%=hasil.waktu%>
+                </td>
+                <td class="list-produk" width=100px length=100px>
+                    <%=hasil.id_pesanan%>
+                </td>
+                <td class="list-produk" width=100px length=100px>
+                    <%= hasil.detailpesanan%>
+                </td>
+                <td class="test2">
+                    <img src=<%= hasil.bukti %> width=100px length=100px></img>
+                </td>
+                <td>
+                    <form method="GET" action="/validasi/<%=hasil.id_pesanan%>">
+                        <button class="list-produk">Approve</button>
+                    </form>
+                    
+                </td>
+            </tr>
+            <% } %>
+          </table>
+            <!-- <div class="approve">
+                <a href="#approve">Approve</a>
+            </div> -->
+    </div>
+</body>
+</html>

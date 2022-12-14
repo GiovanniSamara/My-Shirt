@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=	, initial-scale=1.0">
+  <link rel="stylesheet" href="/keranjang.css" />
+  <title>Document</title>
+</head>
+
+<body>
+  <%- include('./layout/headerPem.ejs') %>
+
+  <div class="container">
+    <div class="waktu">
+      <p><%=waktu%></p>
+    </div>
+    <div class="content-items2">
+      <table>
+        <tr>
+          <td class="style-td">
+            <div class="profile-image">
+              <img class="img-polo" src="/<%=gambar[0].gambarmodel%>"  />
+            </div>
+          </td> 
+          <td class="prodak-detail">
+            <p>Produk : <%=produk%> <br>
+            Warna : <%=warna%> <br>
+            Ukuran : <%=size%> <br>
+            Bahan : <%=bahan%><br>
+            <% if(aksesoris===undefined){%>
+              Aksesoris : -<br>
+            <%}else{%>
+              Aksesoris : <%=aksesoris%><br>
+            <%}%>
+            <% if(catatanaksesoris===undefined){%>
+              Catatan Aksesoris : -<br>
+            <%}else{%>
+              Catatan Aksesoris : <%=catatanaksesoris%><br>
+            <%}%>
+            Biaya Baju + bahan : Rp <%=hargaproduk%><br> 
+            Biaya Jahit : Rp <%=biayajahit%> <br>
+            Biaya Aksesoris : Rp <%=hargaaksesoris%></p>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="pembatas"></div>
+    <hr>
+    <div class="footer">
+      <table>
+        <tr>
+          <td><h1>Total Biaya</h1></td>
+          <td><button class="edit-btn"><h1>Rp <%= parseInt(hargaproduk)+parseInt(hargaaksesoris)+parseInt(biayajahit)%></h1></button></td>
+          <td><button class="edit-btn"><h1><a style="color:black" href="/transaksi">Bayar</a></h1></button></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+
+</body>
+
+</html>
