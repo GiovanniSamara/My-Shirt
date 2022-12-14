@@ -1,0 +1,160 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #f8cdcd;
+}
+
+a {
+    text-decoration: none;
+}
+
+.nav-container {
+    position: relative;
+    width: screen;
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    background-color: #eb8282;
+    margin: -16px -8px;
+    border-radius: 0px 0px 20px 20px;
+}
+
+.nav-items-group1 {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.nav-items-group1 li {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.nav-items-group1 a {
+    color: white;
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+.nav-logo {
+    width: 6.25rem;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.nav-items-group2 {
+    margin-top: 1.2rem;
+    margin-bottom: auto;
+    margin-right: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+}
+
+.nav-items-group2 span {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.nav-icons {
+    width: 3rem;
+}
+
+.logout-btn {
+    width: 5.5rem;
+    height: 2.5rem;
+    border: none;
+    background-color: #ffaba9;
+    color: black;
+    font-weight: 100;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.content-container {
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.btn {
+    background-color: #ffaba9;
+    text-align: center;
+    width: 360px;
+    height: 400px;
+    border-radius: 10px;
+    margin-left: 15%;
+    font-size: 25px;
+}
+.btn2{
+    background-color: #ffaba9;
+    text-align: center;
+    width: 250px;
+    height: 170px;
+    border-radius: 10px;
+    margin-left: 18%;
+
+}
+
+
+.btn img {
+    width: 300px;
+    height: 300px;
+}
+
+.col-btn {
+    width: 600px;
+}
+
+.tab-container {
+    margin-top: 150px;
+    margin-left: 50px;
+}
+
+.pagination {
+    width: 300px;
+    padding: 80px;
+
+
+    /* code di bawah ini akan membuat div berada di tengah bawah */
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -0%);
+    bottom: 1;
+    margin-left: 1px;
+}
+
+.pagination a {
+    text-align: center;
+    font-size: large;
+    color: black;
+}
+
+.pagination button {
+    width: 50px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+    text-align: center;
+
+}
+.aktiv{
+    background-color: rgb(87, 77, 77);
+}
+
+.search input[type=text]{
+    margin-top: 60px;
+    margin-left: 44%;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    border: none;
+    padding: 10px;
+}
+.displaynone{
+    display: none;
+}

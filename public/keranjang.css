@@ -1,0 +1,124 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+body {
+  background-color: #f8cdcd;
+}
+a {
+  text-decoration: none;
+}
+.nav-container {
+  position: relative;
+  width: screen;
+  height: 5rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: #eb8282;
+  margin: -16px -8px;
+  border-radius: 0px 0px 20px 20px;
+}
+.nav-items-group1 {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.nav-items-group1 li {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.nav-items-group1 a {
+  color: white;
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+.nav-logo {
+  width: 6.25rem;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.nav-items-group2 {
+  margin-top: 1.2rem;
+  margin-bottom: auto;
+  margin-right: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3rem;
+}
+.nav-items-group2 span {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.nav-icons {
+  width: 3rem;
+}
+.logout-btn {
+  width: 5.5rem;
+  height: 2.5rem;
+  border: none;
+  background-color: #ffaba9;
+  color: black;
+  font-weight: 100;
+  font-size: 20px;
+  border-radius: 5px;
+}
+.content-container {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.waktu{
+    width: 400px;
+    margin-left: 40px;
+    padding-top: 10px;
+}
+.waktu p {
+  font-size: 25px;
+  color: white;
+  background-color: #535050;
+  padding: 0.5rem;
+  margin-top: 25px;
+  margin-bottom: 0;  
+}
+.profile-image {
+  background-color: #995337;
+  margin-top: 5px;
+  margin-bottom: 107px;
+}
+.img-polo{
+  height: 150px;
+  margin-right: 0px;
+}
+.content-items2 {
+  background-color: #f0a8a8;
+  padding: 1rem;
+  width: 90%;
+  height: 320px;
+  margin-left:20px;
+}
+.style-td{
+  width: 150px;
+}
+.prodak-detail p{
+  font-size: 25px;
+  color: white;
+  margin-left: 20px;
+  
+}
+.footer{
+  padding-left: 1280px;
+}
+.edit-btn {
+  width: 200px;
+  border: none;
+    background-color: #eb8282;
+  color: black;
+  border-radius: 10px;
+}
+.pembatas{
+  margin-top: 390px;
+}
